@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class TicTacToeBoard
 {
    private int size;
@@ -58,7 +56,6 @@ public class TicTacToeBoard
       {
          winner = getDiagonalWinner();
       }
-
       return winner;
    }
 
@@ -138,38 +135,5 @@ public class TicTacToeBoard
    {
       this.pieces = new TicTacToePiece[this.size][this.size];
    }
- 
-   public void showTicTacToePieces()
-   {
-      for (int i = 0; i < this.size; i++)
-      {
-         String line = "";
-         for (int j = 0; j < this.size; j++)
-         {
-            TicTacToePiece piece = this.getTicTacToePiece(i,j);
-            if (piece == null)
-            {
-               line+="-";
-            }
-            else
-            {
-               line+=piece;
-            }
-         }
-         System.out.println(line);
-      }
-   }
- 
-   public void manualMove(Scanner scanner, TicTacToePiece piece)
-   {
-      int row = 0;
-      int col = 0;
-      do
-      {
-         System.out.println("Enter row: ");
-         row = scanner.nextInt();
-         System.out.println("Enter colunn: ");
-         col = scanner.nextInt();
-      }while (!this.placeTicTacToePiece(row, col, piece));
-   }
+
 }

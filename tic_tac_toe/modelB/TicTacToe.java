@@ -1,12 +1,12 @@
-import java.util.Scanner;
-
 public class TicTacToe
 {
    public static void main(String []args)
    {
-      Scanner scanner = new Scanner(System.in);
       TicTacToeBoard board = new TicTacToeBoard();
+      TicTacToeTerminal terminal = new TicTacToeTerminal(board);
+
       TicTacToePiece []playerTicTacToePieces = {TicTacToePiece.X,TicTacToePiece.O};
+
       int nextPlayer = 0;
       TicTacToePiece winner = null;
       AutoPlayer autoPlayer = new AutoPlayer(TicTacToePiece.X);
@@ -14,7 +14,7 @@ public class TicTacToe
       while(!board.isFull())
       {
          autoPlayer.makeNextMove(board);
-         board.showTicTacToePieces();
+         terminal.showBoard();
 
          winner = board.getWinner();   
          if (board.isFull() || winner != null)
@@ -22,8 +22,8 @@ public class TicTacToe
             break;
          }
          System.out.println("Next Player");
-         board.manualMove(scanner, playerTicTacToePieces[1]);
-         board.showTicTacToePieces();
+         terminal.manualMove(playerTicTacToePieces[1]);
+         terminal.showBoard();
 
          winner = board.getWinner();   
          if (board.isFull() || winner != null)
